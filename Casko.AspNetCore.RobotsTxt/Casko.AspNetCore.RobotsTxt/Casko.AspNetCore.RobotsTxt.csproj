@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PackageId>Casko.AspNetCore.RobotsTxt</PackageId>
+        <Version>1.0.0</Version>
+        <Authors>Casper Korsgaard</Authors>
+        <Company>Casko</Company>
+        <PackageDescription>A package for creating robots.txt files in ASP.NET Core applications.</PackageDescription>
+        <PackageTags>robotstxt;robots;txt;aspnetcore</PackageTags>
+        <RepositoryUrl>https://github.com/hallojoe/robots-txt</RepositoryUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryBranch>main</RepositoryBranch>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="[8.0.0,)"/>
+    </ItemGroup>
+
+</Project>
