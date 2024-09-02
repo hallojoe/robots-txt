@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>Casko.AspNetCore.RobotsTxt</PackageId>
-        <Version>1.0.2</Version>
+        <Version>1.0.3</Version>
         <Authors>Casper Korsgaard</Authors>
         <Company>Casko</Company>
         <PackageDescription>A package for creating robots.txt files in ASP.NET Core applications.</PackageDescription>
