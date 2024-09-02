@@ -1,0 +1,50 @@
+name: Publish NuGet Package
+
+on:
+  push:
+    tags:
+      - '*'
+    paths:
+      - 'Casko.AspNetCore.RobotsTxt/**'  
+
+jobs:
+
+  publish:
+    runs-on: ubuntu-latest
+
+    env:
+      PROJECT_PATH: Casko.AspNetCore.XmlSiteMaps/Casko.AspNetCore.RobotsTxt.csproj
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set Version Variable
+      if: ${{ github.ref_type == 'tag' }}
+      env:
+        TAG: ${{ github.ref_name }}
+      run: echo "VERSION=${TAG#v}" >> $GITHUB_ENV
+  
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.x' 
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore --configuration Release /p:Version=$VERSION
+
+    - name: Pack NuGet package
+      run: dotnet pack ${{ env.PROJECT_PATH }} -o ./artifacts --configuration Release
+      if: success() && github.ref_type == 'tag'      
+
+    - name: Publish NuGet package to GitHub Packages
+      run: dotnet nuget push ./artifacts/*.nupkg --source https://nuget.pkg.github.com/hallojoe/index.json --api-key ${{ secrets.PACKAGES_PUBLISH_KEY }}
+      if: success() && github.ref_type == 'tag'
+
+    - name: Publish NuGet package
+      run: dotnet nuget push ./artifacts/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+      if: success() && github.ref_type == 'tag'
+      
