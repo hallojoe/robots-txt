@@ -81,7 +81,7 @@ public class RobotsTxtBuilder
         return this;
     }
 
-    public RobotsTxtBuilder AddSitemap(string sitemapUrl)
+    public RobotsTxtBuilder AddSitemap(string sitemapUrl = "/sitemap.xml")
     {
         if (!Uri.TryCreate(sitemapUrl, UriKind.Absolute, out _))
         {
