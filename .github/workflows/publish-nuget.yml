@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      PROJECT_PATH: Casko.AspNetCore.Robots.Txt/Casko.AspNetCore.RobotsTxt.csproj
+      PROJECT_PATH: Casko.AspNetCore.RobotsTxt/Casko.AspNetCore.RobotsTxt.csproj
 
     steps:
     - name: Checkout code
